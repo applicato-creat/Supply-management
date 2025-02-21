@@ -1,64 +1,84 @@
-let missingItems = [];
-let invoiceItems = [];
-
-// ≈÷«›… ’‰› ≈·Ï ﬁ«∆„… «·‰Ê«ﬁ’
-function addMissingItem() {
-    const itemInput = document.getElementById('missingItem');
-    const item = itemInput.value.trim();
-
-    if (item) {
-        missingItems.push(item);
-        updateMissingList();
-        itemInput.value = '';
-    }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
 }
 
-// ≈÷«›… ’‰› ≈·Ï ›« Ê—… «·Ê«—œ
-function addInvoiceItem() {
-    const itemInput = document.getElementById('invoiceItem');
-    const item = itemInput.value.trim();
-
-    if (item) {
-        invoiceItems.push(item);
-        updateInvoiceList();
-        itemInput.value = '';
-    }
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-//  ÕœÌÀ ﬁ«∆„… «·‰Ê«ﬁ’
-function updateMissingList() {
-    const list = document.getElementById('missingList');
-    list.innerHTML = '';
-    missingItems.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        list.appendChild(li);
-    });
+h1 {
+    text-align: center;
+    color: #333;
 }
 
-//  ÕœÌÀ ﬁ«∆„… ›« Ê—… «·Ê«—œ
-function updateInvoiceList() {
-    const list = document.getElementById('invoiceList');
-    list.innerHTML = '';
-    invoiceItems.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        list.appendChild(li);
-    });
+.input-section {
+    margin-bottom: 20px;
 }
 
-// „⁄«·Ã… «·›« Ê—… ÊÕ–› «·√’‰«› «·Ê«—œ… „‰ «·‰Ê«ﬁ’
-function processInvoice() {
-    invoiceItems.forEach(invoiceItem => {
-        const index = missingItems.indexOf(invoiceItem);
-        if (index !== -1) {
-            missingItems.splice(index, 1); // Õ–› «·’‰› „‰ «·‰Ê«ﬁ’
-        }
-    });
+textarea, input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
 
-    // ≈⁄«œ…  ⁄ÌÌ‰ ›« Ê—… «·Ê«—œ »⁄œ «·„⁄«·Ã…
-    invoiceItems = [];
-    updateMissingList();
-    updateInvoiceList();
-    alert(' „ „⁄«·Ã… «·›« Ê—… »‰Ã«Õ!');
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.lists {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shortage-list, .received-list {
+    width: 48%;
+}
+
+h3 {
+    color: #555;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    margin: 5px 0;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+li button {
+    background-color: #007bff;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+li button:hover {
+    background-color: #0056b3;
 }
