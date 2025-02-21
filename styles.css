@@ -1,5 +1,7 @@
 body {
-    font-family: Arial, sans-serif;
+    direction: rtl;
+    text-align: right;
+    font-family: 'Tahoma', 'Arial', sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 20px;
